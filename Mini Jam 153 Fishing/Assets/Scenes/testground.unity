@@ -482,8 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3bcb6a2535cd046896ec45e7fe0443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0}
-  mousePos: {x: 10, y: 0}
+  target: {x: 0, y: 0, z: 0}
   hook: {fileID: 881681597}
   maincam: {fileID: 1728880654}
   speed: 2
@@ -607,7 +606,7 @@ Transform:
   m_GameObject: {fileID: 2015702136}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.39, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

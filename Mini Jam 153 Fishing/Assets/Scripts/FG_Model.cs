@@ -4,5 +4,16 @@ using UnityEngine;
 
 public class FG_Model : FG_Element
 {
-    
+    private int Score { get; set; }
+    public float fishMovementSpeed;
+
+    public int GetScore()
+    {
+        return Score;
+    }
+
+    public void SetScore(int change)
+    {
+        Score += change;
+    }
 }
