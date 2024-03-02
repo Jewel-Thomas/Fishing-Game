@@ -9,7 +9,6 @@ public class FG_PlayerController : FG_Element
 
     public void AstroRotation(Transform playerViewTransform)
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        playerViewTransform.Rotate(Vector3.back * playerRotSpeed * Time.deltaTime * horizontalInput);
+        playerViewTransform.Rotate(Vector3.forward * playerRotSpeed * Time.deltaTime);
     }
 }
