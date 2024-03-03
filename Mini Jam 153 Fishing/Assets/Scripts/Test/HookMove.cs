@@ -25,5 +25,7 @@ public class HookMove : MonoBehaviour
             hook.transform.DOMove(mousePos,2f,false); 
         }
 
+        
+
     }
 }
