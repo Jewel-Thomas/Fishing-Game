@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class FG_AstroidController : MonoBehaviour
+public class FG_AstroidController : FG_Element
 {
     [SerializeField] GameObject playerObject;
     private Rigidbody astroidRb;
@@ -25,5 +25,14 @@ public class FG_AstroidController : MonoBehaviour
     {
         Vector3 directionTowardsPlayer = playerObject.transform.position - transform.position;
         astroidRb.AddForce(directionTowardsPlayer * fallSpeed * Time.deltaTime, ForceMode.Impulse);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Boundary") || other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+            fG_Application.fG_Controller.fG_SpawnManager.AstroidCount--;
+        }
     }
 }
