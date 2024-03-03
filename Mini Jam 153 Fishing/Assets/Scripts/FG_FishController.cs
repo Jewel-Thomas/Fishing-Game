@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class FG_FishController : FG_Element
 {
     private float fishTranversalSpeed;
+    private float[] orbitRadii;
     public float spawnX;
     public float lowSpawnYMin;
     public float lowSpawnYMax;
@@ -14,13 +16,14 @@ public class FG_FishController : FG_Element
 
     void Awake()
     {
-        fishTranversalSpeed = fG_Application.fG_Model.fishMovementSpeed; 
+        fishTranversalSpeed = fG_Application.fG_Model.fishMovementSpeed;
+        orbitRadii = fG_Application.fG_Model.orbitRadii;
     }
 
-    public void FishTraverse(Transform fishViewTransform)
+    public void FishTraverse(Transform fishViewTransform, Rigidbody fishViewRb)
     {
-        // TODO : Fish traversal
-        fishViewTransform.Translate(Vector3.right * fishTranversalSpeed * Time.deltaTime);
+        fishTranversalSpeed = fG_Application.fG_Model.fishMovementSpeed;
+        fishViewTransform.RotateAround(new Vector3(0,1,0), Vector3.forward, fishTranversalSpeed * Time.deltaTime);
     }
 
     // Places the fish in a sensible manner
@@ -32,13 +35,20 @@ public class FG_FishController : FG_Element
         else chosenPosition.y = Random.Range(highSpawnYMin, highSpawnYMax);
 
         fishViewTransform.position = chosenPosition;
+
+        Vector3 randomOrbit = new Vector3(orbitRadii[Random.Range(0, orbitRadii.Length)], 0, 0);
+        fG_Application.fG_Model.fishMovementSpeed = 10 * randomOrbit.x;
+
+        fishViewTransform.DOMove(randomOrbit, 2, false);
+
     }
 
     // Instead of spawning a new fish when it reaches to the opposite side, we can simply change it's direction inorder
     // to avoid spawn fish overhead
-    public void ChangeFishDirection(Transform fishViewTransform)
+    public void ChangeFishDirection(Transform fishViewTransform, Rigidbody fishViewRb)
     {
         fishViewTransform.Rotate(0,180,0);
+        fishViewRb.velocity = -fishViewRb.velocity;
     }
 
 }

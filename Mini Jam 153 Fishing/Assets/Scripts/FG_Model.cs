@@ -6,6 +6,7 @@ public class FG_Model : FG_Element
 {
     private int Score { get; set; }
     public float fishMovementSpeed;
+    public float[] orbitRadii;
 
     public int GetScore()
     {
