@@ -41,6 +41,7 @@ public class hookmechanic : FG_Element
         {
             Fish_Caught = true;
             fish = other.gameObject;
+            audioManager.sfxAudioSource.PlayOneShot(audioManager.grapplingClip);
             StartCoroutine(PickPlanetSound());
             int scoreChange = (int) (10 + Mathf.Ceil(fish.GetComponent<FG_FishView>().fishTranversalSpeed / 118 * 20));
             fG_Model.SetScore(scoreChange);

@@ -9,10 +9,12 @@ public class FG_AstroidController : FG_Element
     private Rigidbody astroidRb;
     public float fallSpeed;
     private FG_Model fG_Model;
+    private AudioManager audioManager;
 
     void Awake()
     {
         fG_Model = fG_Application.fG_Model;
+        audioManager = fG_Application.fG_Controller.audioManager;
     }
     void Start()
     {
@@ -35,11 +37,17 @@ public class FG_AstroidController : FG_Element
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("AstroidKill") || other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("AstroidKill"))
+        {
+            Destroy(gameObject);
+            fG_Application.fG_Controller.fG_SpawnManager.AstroidCount--;
+        }
+        if(other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
             fG_Application.fG_Controller.fG_SpawnManager.AstroidCount--;
             fG_Model.SetHealth(-12.5f);
+            audioManager.sfxAudioSource.PlayOneShot(audioManager.astroidHitClip);
         }
     }
 }
