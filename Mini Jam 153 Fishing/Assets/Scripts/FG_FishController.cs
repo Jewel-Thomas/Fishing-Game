@@ -37,7 +37,7 @@ public class FG_FishController : FG_Element
         fishViewTransform.position = chosenPosition;
 
         Vector3 randomOrbit = new Vector3(orbitRadii[Random.Range(0, orbitRadii.Length)], 0, 0);
-        fG_Application.fG_Model.fishMovementSpeed = 7.5f * randomOrbit.x;
+        fG_Application.fG_Model.fishMovementSpeed = 7.5f * randomOrbit.x * Random.Range(0.75f,2.0f);
 
         fishViewTransform.DOMove(randomOrbit, 2, false);
 
