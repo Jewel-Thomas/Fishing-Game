@@ -21,7 +21,7 @@ public class hookmechanic : MonoBehaviour
             Destroy(fish,2f);
             Player.transform.DOMove(fish.transform.position,2f,false);
             Fish_Caught = false;
-            //Invoke()
+            
         }
         
     }
@@ -35,9 +35,5 @@ public class hookmechanic : MonoBehaviour
         }
     }
 
-    void resetHook()
-    {
-        transform.position = Player.transform.position;
-    }
 
 }

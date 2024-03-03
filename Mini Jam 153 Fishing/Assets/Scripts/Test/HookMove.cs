@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class HookMove : MonoBehaviour
 {
-    public GameObject hook;
+    public GameObject hook,Player;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +23,20 @@ public class HookMove : MonoBehaviour
             Debug.Log("mouse clicked: " + mousePos.ToString());
 
             hook.transform.DOMove(mousePos,2f,false); 
+            if(!hookmechanic.Fish_Caught)
+            {
+                Invoke("resetHook", 2.5f);
+            }
+            
         }
-
-        
-
+  
     }
+    
+    void resetHook()
+    {
+        Debug.Log("invoked function");
+        //hook.transform.position = new Vector3(0,1,0);
+        hook.transform.DOMove(Player.transform.position,1f,false);
+    }
+
 }
