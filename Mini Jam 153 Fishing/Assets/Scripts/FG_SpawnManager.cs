@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FG_SpawnManager : MonoBehaviour
+public class FG_SpawnManager : FG_Element
 {
-    // Start is called before the first frame update
+    public Transform fishView;
+    public GameObject fishPrefab;
+    public int maxFishAmount;
+    public int fishPoolCount;
+
     void Start()
     {
-        
+        InvokeRepeating("SpawnFish", 2f, 5f);
     }
 
-    // Update is called once per frame
-    void Update()
+    void SpawnFish()
     {
-        
+        if(fishPoolCount < maxFishAmount)
+        {
+            Instantiate(fishPrefab, fishView);
+            fishPoolCount++;       
+        }
     }
+
+
 }
