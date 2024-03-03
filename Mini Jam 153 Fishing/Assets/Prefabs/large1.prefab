@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 0}
-  fallSpeed: 400
+  fallSpeed: 200
 --- !u!54 &-2773637769550525610
 Rigidbody:
   m_ObjectHideFlags: 0
