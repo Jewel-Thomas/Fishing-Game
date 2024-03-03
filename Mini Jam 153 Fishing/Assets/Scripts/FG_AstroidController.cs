@@ -29,7 +29,7 @@ public class FG_AstroidController : FG_Element
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Boundary") || other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("AstroidKill") || other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
             fG_Application.fG_Controller.fG_SpawnManager.AstroidCount--;
