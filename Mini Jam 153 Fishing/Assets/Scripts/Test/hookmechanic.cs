@@ -19,7 +19,7 @@ public class hookmechanic : MonoBehaviour
         if(Fish_Caught)
         {
             Destroy(fish,2f);
-            Player.transform.DOMove(fish.transform.position,2f,false);
+            Player.transform.DOMove(fish.transform.position,4f,false);
             Fish_Caught = false;
             
         }

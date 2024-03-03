@@ -27,6 +27,11 @@ public class HookMove : MonoBehaviour
             {
                 Invoke("resetHook", 2.5f);
             }
+            else if(hookmechanic.Fish_Caught && hook.transform.position == Player.transform.position)
+            {
+                hook.transform.localPosition = Player.transform.position;
+            }
+
             
         }
   
