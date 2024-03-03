@@ -9,7 +9,14 @@ public class HookMove : FG_Element
     public float Timer;
     public TrailRenderer trailRenderer;
     public hookmechanic hookmechanic;
+    private AudioManager audioManager;
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        audioManager = fG_Application.fG_Controller.audioManager;
+    }   
+
     void Start()
     {
 
@@ -21,6 +28,7 @@ public class HookMove : FG_Element
         if(Input.GetMouseButtonDown(0))
         {
             Timer = 1;
+            audioManager.sfxAudioSource.PlayOneShot(audioManager.grapplingClip);
             trailRenderer.enabled = true;
             hookmechanic.GetComponent<Collider>().enabled = true;
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);

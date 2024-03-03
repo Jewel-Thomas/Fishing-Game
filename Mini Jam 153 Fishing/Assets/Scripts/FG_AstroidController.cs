@@ -8,6 +8,12 @@ public class FG_AstroidController : FG_Element
     [SerializeField] GameObject playerObject;
     private Rigidbody astroidRb;
     public float fallSpeed;
+    private FG_Model fG_Model;
+
+    void Awake()
+    {
+        fG_Model = fG_Application.fG_Model;
+    }
     void Start()
     {
         playerObject = FindFirstObjectByType<FG_PlayerView>().gameObject;
@@ -18,7 +24,7 @@ public class FG_AstroidController : FG_Element
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(0, 0, 20 * Time.deltaTime);
     }
 
     void MoveTowardsPlayer()
@@ -33,6 +39,7 @@ public class FG_AstroidController : FG_Element
         {
             Destroy(gameObject);
             fG_Application.fG_Controller.fG_SpawnManager.AstroidCount--;
+            fG_Model.SetHealth(-12.5f);
         }
     }
 }

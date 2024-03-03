@@ -9,4 +9,5 @@ public class FG_Controller : FG_Element
     public FG_OrbitController fG_OrbitController;
     public hookmechanic hookmechanic;
     public FG_SpawnManager fG_SpawnManager;
+    public AudioManager audioManager;
 }
